@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A4216D33-DE09-4134-AE96-84CE72759398}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		README.txt = README.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsLglcd", "CsLglcd\CsLglcd.csproj", "{F0CABF80-D330-410A-BE04-4296845CEBA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

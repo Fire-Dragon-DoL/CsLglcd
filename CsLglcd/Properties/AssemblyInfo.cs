@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
 [assembly: AssemblyTitle("CsLglcd")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Allows easy interaction through CSharp al Logitech G13, G15, G19 Keyboards lcds")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Francesco Belladonna")]
 [assembly: AssemblyProduct("CsLglcd")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright © Francesco Belladonna 2012")]
+[assembly: AssemblyTrademark("Francesco Belladonna")]
 [assembly: AssemblyCulture("")]
 
 // Se si imposta ComVisible su false, i tipi in questo assembly non saranno visibili 

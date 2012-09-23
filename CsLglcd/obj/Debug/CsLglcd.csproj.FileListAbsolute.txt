@@ -1,0 +1,5 @@
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd\bin\Debug\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd\bin\Debug\CsLglcd.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd\obj\Debug\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd\obj\Debug\CsLglcd.pdb

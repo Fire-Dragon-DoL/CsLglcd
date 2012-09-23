@@ -9,6 +9,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsLglcd", "CsLglcd\CsLglcd.csproj", "{F0CABF80-D330-410A-BE04-4296845CEBA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{7DF0C84D-AAF5-4762-87F8-0DDDFB270A35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsLglcd.UI", "CsLglcd.UI\CsLglcd.UI.csproj", "{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +23,15 @@ Global
 		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0CABF80-D330-410A-BE04-4296845CEBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{132EDE67-2902-4F71-B3EB-F5CDFC3A60B4} = {7DF0C84D-AAF5-4762-87F8-0DDDFB270A35}
 	EndGlobalSection
 EndGlobal

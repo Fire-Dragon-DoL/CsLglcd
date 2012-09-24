@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CsLglcd.UI.Windows
 {
-    public class ContentControl : Control
+    public abstract class ContentControl : Control
     {
         private class UserControlComparer : IComparer<UserControl>
         {

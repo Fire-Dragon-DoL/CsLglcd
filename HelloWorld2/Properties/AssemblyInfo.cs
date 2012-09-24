@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // Le informazioni generali relative a un assembly sono controllate dal seguente 
 // set di attributi. Per modificare le informazioni associate a un assembly
 // occorre quindi modificare i valori di questi attributi.
-[assembly: AssemblyTitle("CsLglcd.UI")]
-[assembly: AssemblyDescription("Utility library to help creating user interfaces for CsLglcd library")]
+[assembly: AssemblyTitle("HelloWorld2")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Francesco Belladonna")]
-[assembly: AssemblyProduct("CsLglcd.UI")]
-[assembly: AssemblyCopyright("Copyright © Francesco Belladonna 2012")]
-[assembly: AssemblyTrademark("Francesco Belladonna")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("HelloWorld2")]
+[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Se si imposta ComVisible su false, i tipi in questo assembly non saranno visibili 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Se il progetto viene esposto a COM, il GUID che segue verrà utilizzato per creare l'ID della libreria dei tipi
-[assembly: Guid("8ea222de-439a-4bdb-95fb-6eb60dd36a74")]
+[assembly: Guid("a5cf62cb-e9a8-4974-9e66-35c478da9abf")]
 
 // Le informazioni sulla versione di un assembly sono costituite dai seguenti quattro valori:
 //

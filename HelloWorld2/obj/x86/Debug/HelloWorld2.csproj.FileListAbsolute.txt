@@ -1,0 +1,11 @@
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\Lglcd_x64.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\Lglcd_x86.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\HelloWorld2.exe
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\HelloWorld2.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\CsLglcd.UI.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\CsLglcd.UI.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Debug\CsLglcd.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Debug\HelloWorld2.exe
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Debug\HelloWorld2.pdb

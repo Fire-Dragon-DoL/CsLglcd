@@ -100,7 +100,8 @@ namespace CsLglcd
             get { return m_Applet; }
             set
             {
-                EnsureAttached();
+                EnsureNotDisposed();
+                EnsureNotAttached();
                 m_Applet = value;
             }
         }
@@ -110,7 +111,8 @@ namespace CsLglcd
             get { return m_DeviceType; }
             set
             {
-                EnsureAttached();
+                EnsureNotDisposed();
+                EnsureNotAttached();
                 m_DeviceType = value;
             }
         }
@@ -146,7 +148,7 @@ namespace CsLglcd
             EnsureNotAttached();
 
             openByTypeContext.connection = Applet.connectContextEx.connection;
-            openByTypeContext.deviceType = (DeviceTypes)Enum.ToObject(typeof(DeviceTypes), openByTypeContext.deviceType);
+            openByTypeContext.deviceType = (DeviceTypes)Enum.ToObject(typeof(DeviceTypes), DeviceType);
 
             uint result = MethodsWrapper.OpenByType(ref openByTypeContext);
             switch (result)
@@ -288,9 +290,9 @@ namespace CsLglcd
         #endregion
     }
 
-    public class Device<T> : Device where T : IImageUpdater
+    public class Device<T> : Device where T : IImageUpdater, new()
     {
-        public Device() : base() { }
+        public Device() : base() { ImageUpdater = new T(); }
 
         public T SpecializedImageUpdater
         {

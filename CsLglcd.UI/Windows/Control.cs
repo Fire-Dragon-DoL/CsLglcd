@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace CsLglcd.UI.Windows
 {
-    public class Control
+    public abstract class Control
     {
         public bool Hidden { get; set; }
         public int Width { get; set; }

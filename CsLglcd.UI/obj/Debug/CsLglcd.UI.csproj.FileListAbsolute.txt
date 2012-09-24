@@ -1,0 +1,12 @@
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\CsLglcd.UI.Properties.Resources.resources
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\CsLglcd.UI.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\CsLglcd.UI.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\CsLglcd.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\CsLglcd.UI.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\obj\Debug\CsLglcd.UI.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\Lglcd_x64.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.UI\bin\Debug\Lglcd_x86.dll

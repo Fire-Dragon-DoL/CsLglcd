@@ -6,29 +6,53 @@ using CsLglcd.Interop;
 
 namespace CsLglcd
 {
-    public static class Lglcd
+    /// <summary>
+    /// When the object is disposed (or destroyed) library will be uninitialized.
+    /// When the object is instanciated, library is initialized, this will allow nice using construct.
+    /// </summary>
+    public class Lglcd : IDisposable
     {
-        public static bool Initialized { get; private set; }
-        public static void Initialize()
+        public bool Disposed { get; private set; }
+        private static bool m_Initialized;
+
+        public Lglcd()
         {
-            if (!Initialized)
-            {
-                MethodsWrapper.Init();
-                Initialized = true;
-            }
-            else
+            if (m_Initialized)
                 throw new InitializationException("Library already initialized");
+            MethodsWrapper.Init();
+            m_Initialized = true;
         }
 
-        public static void Uninitialize()
+        #region Dispose handling
+        /// <summary>
+        /// Calls automatically Disconnect if required
+        /// </summary>
+        public void Dispose()
         {
-            if (Initialized)
-            {
-                MethodsWrapper.DeInit();
-                Initialized = false;
-            }
-            else
-                throw new InitializationException("Library not initialized");
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (Disposed) return;
+
+            if (disposing)
+            {
+                // Managed resources
+                m_Initialized = false;
+            }
+
+            // Unmanaged resources
+            MethodsWrapper.DeInit();            
+
+            Disposed = true;
+        }
+
+        ~Lglcd()
+        {
+            Dispose(false);
+        }
+        #endregion
     }
 }

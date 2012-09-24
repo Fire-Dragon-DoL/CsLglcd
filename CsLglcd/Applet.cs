@@ -247,12 +247,8 @@ namespace CsLglcd
             }
 
             // Unmanaged resources
-            try
-            {
-                if (Connected)
-                    Disconnect();
-            }
-            catch { }
+            if (Connected)
+                Disconnect();
 
             Disposed = true;
         }

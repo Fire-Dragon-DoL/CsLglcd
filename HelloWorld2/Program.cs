@@ -15,41 +15,40 @@ namespace HelloWorld2
             Console.WriteLine("Testing basic functionality for CsLglcd");
             Console.WriteLine("Loading applet...");
 
-            Lglcd.Initialize();
-
-            Applet helloWorldApplet = new Applet();
-            helloWorldApplet.SupportedDevices = SupportedDevices.QVGA;
-            helloWorldApplet.Title = "Hello World 2";
-            helloWorldApplet.Connect();
-
-            Device<QvgaImageUpdater> qvgaDevice = new Device<QvgaImageUpdater>();
-            qvgaDevice.Applet = helloWorldApplet;
-            qvgaDevice.DeviceType = Devices.QVGA;
-            qvgaDevice.Attach();
-
-            Console.WriteLine("Press ENTER to draw a test image with CsLglcd.UI");
-            Console.ReadLine();
-
-            Bitmap testImage = qvgaDevice.SpecializedImageUpdater.CreateValidImage();
-            Form form = new Form()
+            using (Lglcd lglcd = new Lglcd())
             {
-                Title = "Hello World 2"
-            };
-            form.Draw(testImage);
+                Applet helloWorldApplet = new Applet();
+                helloWorldApplet.SupportedDevices = SupportedDevices.QVGA;
+                helloWorldApplet.Title = "Hello World 2";
+                helloWorldApplet.Connect();
 
-            qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
-            qvgaDevice.Update();
+                Device<QvgaImageUpdater> qvgaDevice = new Device<QvgaImageUpdater>();
+                qvgaDevice.Applet = helloWorldApplet;
+                qvgaDevice.DeviceType = Devices.QVGA;
+                qvgaDevice.Attach();
 
-            Console.WriteLine("Press ENTER to cleanup memory");
-            Console.ReadLine();
+                Console.WriteLine("Press ENTER to draw a test image with CsLglcd.UI");
+                Console.ReadLine();
 
-            testImage.Dispose();
-            qvgaDevice.Detach();
-            qvgaDevice.Dispose();
-            helloWorldApplet.Disconnect();
-            helloWorldApplet.Dispose();
+                Bitmap testImage = qvgaDevice.SpecializedImageUpdater.CreateValidImage();
+                Form form = new Form()
+                {
+                    Title = "Hello World 2"
+                };
+                form.Draw(testImage);
 
-            Lglcd.Uninitialize();
+                qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
+                qvgaDevice.Update();
+
+                Console.WriteLine("Press ENTER to cleanup memory");
+                Console.ReadLine();
+
+                testImage.Dispose();
+                qvgaDevice.Detach();
+                qvgaDevice.Dispose();
+                helloWorldApplet.Disconnect();
+                helloWorldApplet.Dispose();
+            }
 
             Console.WriteLine("Press ENTER to close application");
             Console.ReadLine();

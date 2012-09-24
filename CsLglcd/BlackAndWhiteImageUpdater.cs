@@ -35,6 +35,11 @@ namespace CsLglcd
             }
         }
 
+        public Bitmap CreateValidImage()
+        {
+            return new Bitmap(160, 43, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        }
+
         public void SetPixels(Bitmap image)
         {
             bitmap160x43x1.SetPixels(image);

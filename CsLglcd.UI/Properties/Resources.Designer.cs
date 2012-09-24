@@ -67,9 +67,9 @@ namespace CsLglcd.UI.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap qvga_defaulticon {
+        internal static System.Drawing.Bitmap qvga_background_headericon {
             get {
-                object obj = ResourceManager.GetObject("qvga_defaulticon", resourceCulture);
+                object obj = ResourceManager.GetObject("qvga_background_headericon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

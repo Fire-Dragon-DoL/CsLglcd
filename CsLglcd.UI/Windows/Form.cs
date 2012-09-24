@@ -11,6 +11,7 @@ namespace CsLglcd.UI.Windows
         public Bitmap Background { get; set; }
         public Bitmap Header { get; set; }
         public string Title { get; set; }
+        public Bitmap IconBackground { get; set; }
         public Bitmap Icon { get; set; }
         public Font BaseFont { get; set; }
 
@@ -26,7 +27,7 @@ namespace CsLglcd.UI.Windows
                 12.0f,
                 FontStyle.Bold
             );
-            Icon = CsLglcd.UI.Properties.Resources.qvga_defaulticon;
+            IconBackground = CsLglcd.UI.Properties.Resources.qvga_background_headericon;
         }
 
         public override void Draw(Bitmap surface, Graphics drawer = null)
@@ -42,6 +43,8 @@ namespace CsLglcd.UI.Windows
                 g.DrawImage(Background);
             if (Header != null)
                 g.DrawImage(Header);
+            if (IconBackground != null)
+                g.DrawImage(IconBackground, 3, 3);
             if (Icon != null)
                 g.DrawImage(Icon, 3, 3);
             if (!string.IsNullOrWhiteSpace(Title))

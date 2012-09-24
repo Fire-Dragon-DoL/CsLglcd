@@ -15,8 +15,16 @@ namespace CsLglcd.UI.Windows
             }
         }
 
-        private SortedSet<UserControl> m_Items = new SortedSet<UserControl>(new UserControlComparer());
-        protected SortedSet<UserControl> Items { get { return m_Items; } set { m_Items = value; } }
+        private List<UserControl> m_Items = new List<UserControl>();
+        protected List<UserControl> Items
+        {
+            get
+            {
+                m_Items.Sort();
+                return m_Items;
+            }
+            set { m_Items = value; }
+        }
 
         public void AddControl(UserControl item)
         {

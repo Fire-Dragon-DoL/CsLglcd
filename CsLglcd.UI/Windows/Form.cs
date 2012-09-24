@@ -63,11 +63,7 @@ namespace CsLglcd.UI.Windows
             }
 
             foreach (UserControl control in Items)
-            {
-                if (control.Hidden)
-                    continue;
                 control.Draw(surface, g);
-            }
 
             g.Dispose();
         }

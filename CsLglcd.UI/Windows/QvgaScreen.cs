@@ -4,55 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace CsLglcd.UI.Windows.Old
+namespace CsLglcd.UI.Windows
 {
-    public class Form : ContentControl
+    public class QvgaScreen : Screen
     {
         public Image Background { get; set; }
         public Image Header { get; set; }
-        public string Title { get; set; }
+        public string Title { get { return Applet.Title; } }
         public Image IconBackground { get; set; }
         public Image Icon { get; set; }
         public Font BaseFont { get; set; }
 
-        public Form()
+        public override int Width { get { return Background.Width; } }
+        public override int Height { get { return Background.Height; } }
+
+        public QvgaScreen(Applet applet, Device device)
+            : base(applet, device)
         {
-            Title = string.Empty;
             Background = CsLglcd.UI.Properties.Resources.qvga_background;
             Header = CsLglcd.UI.Properties.Resources.qvga_header;
-            Width = Background.Width;
-            Height = Background.Height;
             BaseFont = Fonts.Qvga.Normal;
             IconBackground = CsLglcd.UI.Properties.Resources.qvga_background_headericon;
         }
 
-        public override void Draw(Bitmap surface, Graphics drawer = null)
+        public override void Draw(Image surface, Graphics drawer, Point offset = new Point())
         {
-            if (Hidden) return;
-
-            Graphics g = drawer;
-            if (g == null)
-                g = Graphics.FromImage(surface);
-
-            g.FillRectangle(Brushes.Red, new Rectangle(0, 0, Width, Height));
+            drawer.Clear(Color.Black);
             if (Background != null)
-                g.DrawImage(Background);
+                drawer.DrawImage(Background);
             if (Header != null)
-                g.DrawImage(Header);
+                drawer.DrawImage(Header);
             if (IconBackground != null)
-                g.DrawImage(IconBackground, 3, 3);
+                drawer.DrawImage(IconBackground, 3, 3);
             if (Icon != null)
-                g.DrawImage(Icon, 3, 3);
+                drawer.DrawImage(Icon, 3, 3);
             if (!string.IsNullOrWhiteSpace(Title))
             {
-                g.DrawString(
+                drawer.DrawString(
                     Title,
                     BaseFont,
                     Brushes.Black,
                     30.0f,
                     5.0f
                 );
-                g.DrawString(
+                drawer.DrawString(
                     Title,
                     BaseFont,
                     Brushes.White,
@@ -60,11 +55,7 @@ namespace CsLglcd.UI.Windows.Old
                     4.0f
                 );
             }
-
-            foreach (UserControl control in Items)
-                control.Draw(surface, g);
-
-            g.Dispose();
+            base.Draw(surface, drawer, new Point(offset.X, offset.Y + 30));
         }
     }
 }

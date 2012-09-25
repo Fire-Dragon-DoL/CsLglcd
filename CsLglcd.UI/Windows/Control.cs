@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace CsLglcd.UI.Windows
 {
-    public abstract class Control
+    public abstract class Control : IDrawable
     {
         public class ControlComparer : IComparer<Control>
         {
@@ -23,6 +23,6 @@ namespace CsLglcd.UI.Windows
         public int Y { get; set; }
         public int Z { get; set; }
 
-        public abstract void Draw(Image surface, Graphics drawer, Point offset = new Point(0, 0));
+        public abstract void Draw(Image surface, Graphics drawer, Point offset = new Point());
     }
 }

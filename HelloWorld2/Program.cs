@@ -31,11 +31,14 @@ namespace HelloWorld2
                 Console.ReadLine();
 
                 Bitmap testImage = qvgaDevice.SpecializedImageUpdater.CreateValidImage();
-                Screen form = new Screen()
+                using (Graphics drawer = Graphics.FromImage(testImage))
                 {
-                    Title = "Hello World 2"
-                };
-                form.Draw(testImage);
+                    QvgaScreen form = new QvgaScreen(helloWorldApplet, qvgaDevice);
+                    ContainerControl controls = new ContainerControl();
+                    form.Control = controls;
+                    controls.AddControl(new TextControl() { Text = "test", X = 5, BaseFont = form.BaseFont });
+                    form.Draw(testImage, drawer);
+                }
 
                 qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
                 qvgaDevice.Update();

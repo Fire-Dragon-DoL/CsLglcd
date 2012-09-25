@@ -36,14 +36,14 @@ namespace CsLglcd.UI.Windows
             return Items.Remove(control);
         }
 
-        public override void Draw(Image surface, Graphics drawer, Point offset = new Point(0, 0))
+        public override void Draw(Image surface, Graphics drawer, Point offset = new Point())
         {
             foreach (Control control in Controls)
             {
                 if (control.Hidden)
                     continue;
 
-                control.Draw(surface, drawer);
+                control.Draw(surface, drawer, new Point(offset.X + X, offset.Y + Y));
             }
         }
     }

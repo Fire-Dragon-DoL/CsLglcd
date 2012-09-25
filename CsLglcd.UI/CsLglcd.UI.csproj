@@ -44,6 +44,9 @@
     <Compile Include="Windows\ContainerControl.cs" />
     <Compile Include="Windows\Control.cs" />
     <Compile Include="Windows\Fonts.cs" />
+    <Compile Include="Windows\IDrawable.cs" />
+    <Compile Include="Windows\ImageControl.cs" />
+    <Compile Include="Windows\QvgaScreen.cs" />
     <Compile Include="Windows\Screen.cs" />
     <Compile Include="Windows\GraphicsExtensionMethods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,10 +55,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Old\ContentControl.cs" />
-    <Compile Include="Windows\Old\Control.cs" />
-    <Compile Include="Windows\Old\Form.cs" />
-    <Compile Include="Windows\Old\UserControl.cs" />
+    <Compile Include="Windows\TextControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CsLglcd\CsLglcd.csproj">
@@ -78,10 +78,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\qvga_background_headericon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Windows\Monochrome\" />
-    <Folder Include="Windows\Qvga\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

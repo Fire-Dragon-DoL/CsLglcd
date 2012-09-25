@@ -46,6 +46,7 @@
     <Compile Include="Windows\Fonts.cs" />
     <Compile Include="Windows\IDrawable.cs" />
     <Compile Include="Windows\ImageControl.cs" />
+    <Compile Include="Windows\ProgressBarControl.cs" />
     <Compile Include="Windows\QvgaScreen.cs" />
     <Compile Include="Windows\Screen.cs" />
     <Compile Include="Windows\GraphicsExtensionMethods.cs" />
@@ -78,7 +79,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\qvga_background_headericon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\qvga_bar_empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\qvga_bar_fill_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\qvga_bar_fill_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\qvga_bar_gradient.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

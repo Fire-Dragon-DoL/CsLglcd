@@ -37,11 +37,32 @@ namespace HelloWorld2
                     ContainerControl controls = new ContainerControl();
                     form.Control = controls;
                     controls.AddControl(new TextControl() { Text = "test", X = 5, BaseFont = form.BaseFont });
-                    form.Draw(testImage, drawer);
-                }
+                    var progressbarcontrol = new ProgressBarControl() { X = 8, Y = 100 };
+                    controls.AddControl(progressbarcontrol);
 
-                qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
-                qvgaDevice.Update();
+                    form.Draw(testImage, drawer);
+                    Console.WriteLine("Current percentage: {0}%", progressbarcontrol.Percentage * 100);
+                    qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
+                    qvgaDevice.Update();
+
+                    Console.WriteLine("Press ENTER for 0%");
+                    Console.ReadLine();
+
+                    progressbarcontrol.Current = 0;
+                    form.Draw(testImage, drawer);
+                    Console.WriteLine("Current percentage: {0}%", progressbarcontrol.Percentage * 100);
+                    qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
+                    qvgaDevice.Update();
+
+                    Console.WriteLine("Press ENTER for 100%");
+                    Console.ReadLine();
+
+                    progressbarcontrol.Current = 1000;
+                    form.Draw(testImage, drawer);
+                    Console.WriteLine("Current percentage: {0}%", progressbarcontrol.Percentage * 100);
+                    qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
+                    qvgaDevice.Update();
+                }
 
                 Console.WriteLine("Press ENTER to cleanup memory");
                 Console.ReadLine();

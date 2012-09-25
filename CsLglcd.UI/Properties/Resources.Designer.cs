@@ -74,6 +74,34 @@ namespace CsLglcd.UI.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap qvga_bar_empty {
+            get {
+                object obj = ResourceManager.GetObject("qvga_bar_empty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap qvga_bar_fill_left {
+            get {
+                object obj = ResourceManager.GetObject("qvga_bar_fill_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap qvga_bar_fill_right {
+            get {
+                object obj = ResourceManager.GetObject("qvga_bar_fill_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap qvga_bar_gradient {
+            get {
+                object obj = ResourceManager.GetObject("qvga_bar_gradient", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap qvga_header {
             get {
                 object obj = ResourceManager.GetObject("qvga_header", resourceCulture);

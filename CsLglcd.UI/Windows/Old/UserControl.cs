@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace CsLglcd.UI.Windows
+namespace CsLglcd.UI.Windows.Old
 {
     public class UserControl : Control
     {

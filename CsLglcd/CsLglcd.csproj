@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Applet.cs" />
-    <Compile Include="BlackAndWhiteImageUpdater.cs" />
+    <Compile Include="MonochromeImageUpdater.cs" />
     <Compile Include="Buttons.cs" />
     <Compile Include="ButtonsEventArgs.cs" />
     <Compile Include="ButtonsState.cs" />

@@ -31,7 +31,7 @@ namespace HelloWorld2
                 Console.ReadLine();
 
                 Bitmap testImage = qvgaDevice.SpecializedImageUpdater.CreateValidImage();
-                Form form = new Form()
+                Screen form = new Screen()
                 {
                     Title = "Hello World 2"
                 };

@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace CsLglcd.UI.Windows
+namespace CsLglcd.UI.Windows.Old
 {
     public class Form : ContentControl
     {
-        public Bitmap Background { get; set; }
-        public Bitmap Header { get; set; }
+        public Image Background { get; set; }
+        public Image Header { get; set; }
         public string Title { get; set; }
-        public Bitmap IconBackground { get; set; }
-        public Bitmap Icon { get; set; }
+        public Image IconBackground { get; set; }
+        public Image Icon { get; set; }
         public Font BaseFont { get; set; }
 
         public Form()
@@ -22,11 +22,7 @@ namespace CsLglcd.UI.Windows
             Header = CsLglcd.UI.Properties.Resources.qvga_header;
             Width = Background.Width;
             Height = Background.Height;
-            BaseFont = new Font(
-                "monospace",
-                12.0f,
-                FontStyle.Bold
-            );
+            BaseFont = Fonts.Qvga.Normal;
             IconBackground = CsLglcd.UI.Properties.Resources.qvga_background_headericon;
         }
 

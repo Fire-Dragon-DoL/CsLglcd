@@ -7,13 +7,13 @@ using System.Drawing;
 
 namespace CsLglcd
 {
-    public class BlackAndWhiteImageUpdater : IBitmapUpdater
+    public class MonochromeImageUpdater : IBitmapUpdater
     {
         private lgLcdBitmap160x43x1 bitmap160x43x1;
 
         public bool Disposed { get; private set; }
 
-        public BlackAndWhiteImageUpdater()
+        public MonochromeImageUpdater()
         {
             bitmap160x43x1.hdr.Format = Formats.LGLCD_BMP_FORMAT_160x43x1;
         }
@@ -70,7 +70,7 @@ namespace CsLglcd
             Disposed = true;
         }
 
-        ~BlackAndWhiteImageUpdater()
+        ~MonochromeImageUpdater()
         {
             Dispose(false);
         }

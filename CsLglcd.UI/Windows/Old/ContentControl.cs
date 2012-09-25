@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsLglcd.UI.Windows
+namespace CsLglcd.UI.Windows.Old
 {
     public abstract class ContentControl : Control
     {

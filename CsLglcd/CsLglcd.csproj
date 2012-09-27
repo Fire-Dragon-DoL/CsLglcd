@@ -30,6 +30,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>FrancescoBelladonnaBusiness.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,6 +83,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="FrancescoBelladonnaBusiness.pfx" />
     <None Include="Pdf\LCDProgramming.pdf" />
     <None Include="Pdf\lglcd SDK Release Notes.pdf" />
     <None Include="Pdf\lglcd.pdf" />

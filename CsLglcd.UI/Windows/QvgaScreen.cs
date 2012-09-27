@@ -15,6 +15,8 @@ namespace CsLglcd.UI.Windows
         public Image Icon { get; set; }
         public Font BaseFont { get; set; }
 
+        public int HeaderHeight { get { return 30; } }
+
         public override int Width { get { return Background.Width; } }
         public override int Height { get { return Background.Height; } }
 
@@ -55,7 +57,7 @@ namespace CsLglcd.UI.Windows
                     4.0f
                 );
             }
-            base.Draw(surface, drawer, new Point(offset.X, offset.Y + 30));
+            base.Draw(surface, drawer, new Point(offset.X, offset.Y + HeaderHeight));
         }
     }
 }

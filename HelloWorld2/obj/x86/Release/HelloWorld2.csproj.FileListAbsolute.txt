@@ -1,0 +1,11 @@
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\Lglcd_x64.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\Lglcd_x86.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\HelloWorld2.exe
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\HelloWorld2.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\CsLglcd.UI.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\CsLglcd.UI.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\bin\Release\CsLglcd.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Release\HelloWorld2.exe
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\HelloWorld2\obj\x86\Release\HelloWorld2.pdb

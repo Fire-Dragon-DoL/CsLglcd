@@ -1,0 +1,16 @@
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.MediaJukeboxDisplay.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.MediaJukeboxDisplay.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\CsLglcd.MediaJukeboxDisplay.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\CsLglcd.MediaJukeboxDisplay.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\Interop.MediaJukebox.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\CsLglcd.MediaJukeboxDisplay.csproj.ResolveComReference.cache
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\Lglcd_x64.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\Lglcd_x86.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.UI.dll
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.UI.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.pdb
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\CsLglcd.MediaJukeboxDisplay.Properties.Resources.resources
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\GenerateResource.read.1.tlog
+C:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\obj\Release\GenerateResource.write.1.tlog

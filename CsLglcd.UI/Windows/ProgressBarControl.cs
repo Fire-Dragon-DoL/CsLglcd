@@ -8,16 +8,16 @@ namespace CsLglcd.UI.Windows
 {
     public class ProgressBarControl : Control
     {
-        public int Min { get; set; }
-        public int Max { get; set; }
-        public int Current { get; set; }
+        public dynamic Min { get; set; }
+        public dynamic Max { get; set; }
+        public dynamic Current { get; set; }
 
         public ProgressBarControl()
             : base()
         {
             Min = 0;
-            Max = 1000;
-            Current = 500;
+            Max = 100;
+            Current = 33;
         }
 
         public Image BarFillerLeft { get { return Properties.Resources.qvga_bar_fill_left; } }
@@ -29,7 +29,14 @@ namespace CsLglcd.UI.Windows
         // (Max - Min) : 100 = Current : x
         public float Percentage
         {
-            get { return ((float)Current) / ((float)(Max - Min)); }
+            get
+            {
+                if (Current <= Min)
+                    return 0f;
+                if (Current >= Max)
+                    return 1f;
+                return ((float)Current) / (Max - Min);
+            }
         }
 
         public override void Draw(Image surface, Graphics drawer, Point offset = new Point())

@@ -13,13 +13,16 @@ namespace CsLglcd.MediaJukeboxDisplay
     class AppletMediaJukebox : IDisposable
     {
         public MediaJukeboxAutomation MJ { get; private set; }
+        public MainInterface UI { get; private set; }
         public readonly object SyncRoot = new object();
 
-        private Lglcd LgLcdLib = new Lglcd();
+        private Lglcd LgLcdLib;
         private Applet LglcdApplet;
         private Device<QvgaImageUpdater> QvgaDevice;
         private volatile bool m_DeviceRemoved;
         private Timer m_InitializationTimer;
+        private DateTime m_RaisePriorityUntil;
+        private UpdatePriorities m_UpdatePriority = UpdatePriorities.Normal;
 
         public bool DeviceRemoved { get { return m_DeviceRemoved; } }
 
@@ -34,9 +37,11 @@ namespace CsLglcd.MediaJukeboxDisplay
             }
         }
 
-        public AppletMediaJukebox(MediaJukeboxAutomation mj)
+        public AppletMediaJukebox(MediaJukeboxAutomation mj, MainInterface ui)
         {
             MJ = mj;
+            UI = ui;
+            LgLcdLib = new Lglcd();
 
             LglcdApplet = new Applet()
             {
@@ -51,7 +56,9 @@ namespace CsLglcd.MediaJukeboxDisplay
             LglcdApplet.DeviceArrival += new EventHandler<DeviceEventArgs>(LglcdApplet_DeviceArrival);
             LglcdApplet.DeviceRemoval += new EventHandler<DeviceEventArgs>(LglcdApplet_DeviceRemoval);
 
-            try
+            m_RaisePriorityUntil = DateTime.Now.Add(Properties.Settings.Default.RaisedPriorityTimeout);
+
+            /*try
             {
                 Initialize();
                 InitializeLcdForm();
@@ -66,7 +73,12 @@ namespace CsLglcd.MediaJukeboxDisplay
                         "\n when calling Method " + e.TargetSite +
                         "\n \n The following Inner Exception was caused" + e.InnerException +
                         "\n \n The Stack Trace Follows: \n\n" + e.StackTrace);
-            }
+            }*/
+
+            TrackChange += new EventHandler<MediaJukeboxEventArgs>(AppletMediaJukebox_TrackChange);
+            PlayerStateChange += new EventHandler<MediaJukeboxEventArgs>(AppletMediaJukebox_PlayerStateChange);
+
+            InitializeLcdForm();
 
             m_InitializationTimer = new Timer(new TimerCallback(TimerHandler), null, TimeSpan.Zero, TimeSpan.FromSeconds(1.0));
         }
@@ -92,7 +104,13 @@ namespace CsLglcd.MediaJukeboxDisplay
             m_Form.Draw(m_DisplaySurface, m_DisplayDrawer);
             m_DisplayDrawer.Flush();
             QvgaDevice.SpecializedImageUpdater.SetPixels(m_DisplaySurface);
-            QvgaDevice.Update();
+            QvgaDevice.Update(m_UpdatePriority);
+
+            // FIXME: Understand why ForegroundApplet and UpdatePriority.Alert don't raise application over others
+            /*System.Windows.Forms.MessageBox.Show(string.Format("ForegroundApplet: {0}\nm_UpdatePriority: {1}",
+                QvgaDevice.ForegroundApplet,
+                Enum.GetName(m_UpdatePriority.GetType(), m_UpdatePriority)
+            ));*/
         }
 
         private void InitializeLcdForm()
@@ -102,7 +120,8 @@ namespace CsLglcd.MediaJukeboxDisplay
 
             m_Form = new QvgaScreen(LglcdApplet, QvgaDevice)
             {
-                Icon = Properties.Resources.qvga_mediajukebox
+                Icon = Properties.Resources.qvga_mediajukebox,
+                AppBackground = Properties.Resources.qvga_background
             };
 
             m_Controls = new ContainerControl();
@@ -192,6 +211,11 @@ namespace CsLglcd.MediaJukeboxDisplay
 
         private void TimerHandler(object param1)
         {
+            UpdateHandler();
+        }
+
+        private void UpdateHandler()
+        {
             try
             {
                 Initialize();
@@ -232,7 +256,39 @@ namespace CsLglcd.MediaJukeboxDisplay
 
             m_CurrentTrackPositionTextControl.Text = TimeSpan.FromSeconds(Convert.ToDouble(currentPlaybackTrack.Position)).ToString("g");
             m_CurrentTrackDurationTextControl.Text = TimeSpan.FromSeconds(Convert.ToDouble(currentTrack.Duration)).ToString("g");
+
+            if (m_RaisePriorityUntil > DateTime.Now)
+            {
+                if (!QvgaDevice.ForegroundApplet)
+                    QvgaDevice.ForegroundApplet = true;
+                m_UpdatePriority = UpdatePriorities.Alert;
+            }
+            else
+            {
+                if (QvgaDevice.ForegroundApplet)
+                    QvgaDevice.ForegroundApplet = false;
+                m_UpdatePriority = UpdatePriorities.Normal;
+            }
         }
+
+        #region Events
+        public event EventHandler<MediaJukeboxEventArgs> TrackChange;
+        public event EventHandler<MediaJukeboxEventArgs> PlayerStateChange;
+        public event EventHandler<MediaJukeboxEventArgs> VolumeChange;
+
+        internal protected void OnTrackChange(string param1)
+        {
+            if (TrackChange != null) TrackChange(this, new MediaJukeboxEventArgs(param1));
+        }
+        internal protected void OnPlayerStateChange(string param1)
+        {
+            if (PlayerStateChange != null) PlayerStateChange(this, new MediaJukeboxEventArgs(param1));
+        }
+        internal protected void OnVolumeChange(string param1)
+        {
+            if (VolumeChange != null) VolumeChange(this, new MediaJukeboxEventArgs(param1));
+        }
+        #endregion
 
         #region Event Handlers Methods
         private void LglcdApplet_DeviceRemoval(object sender, DeviceEventArgs e)
@@ -243,6 +299,22 @@ namespace CsLglcd.MediaJukeboxDisplay
         private void LglcdApplet_DeviceArrival(object sender, DeviceEventArgs e)
         {
             m_DeviceRemoved = false;
+        }
+
+        private void AppletMediaJukebox_PlayerStateChange(object sender, MediaJukeboxEventArgs e)
+        {
+        }
+
+        private void AppletMediaJukebox_TrackChange(object sender, MediaJukeboxEventArgs e)
+        {
+            if (Properties.Settings.Default.IncreasePriorityOnTrackChange)
+            {
+                DateTime now = DateTime.Now;
+                if (m_RaisePriorityUntil < now)
+                    m_RaisePriorityUntil = now.Add(Properties.Settings.Default.RaisedPriorityTimeout);
+                else
+                    m_RaisePriorityUntil = m_RaisePriorityUntil.Add(Properties.Settings.Default.RaisedPriorityTimeout);
+            }
         }
         #endregion
 

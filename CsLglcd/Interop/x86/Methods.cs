@@ -76,7 +76,7 @@ namespace CsLglcd.Interop.x86
         /// <param name="priority"></param>
         /// <returns></returns>
         [DllImport("Lglcd_x86.dll", CharSet = CharSet.Unicode)]
-        public extern static uint lgLcdUpdateBitmap([In] int device, [In] IntPtr bitmap, [In] Priorities priority);
+        public extern static uint lgLcdUpdateBitmap([In] int device, [In] IntPtr bitmap, [In] uint priority);
 
         /// <summary>
         /// Sets the calling application as the shown application on the LCD, and stops

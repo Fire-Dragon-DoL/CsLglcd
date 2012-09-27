@@ -60,6 +60,13 @@ namespace CsLglcd.MediaJukeboxDisplay.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap qvga_background {
+            get {
+                object obj = ResourceManager.GetObject("qvga_background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap qvga_mediajukebox {
             get {
                 object obj = ResourceManager.GetObject("qvga_mediajukebox", resourceCulture);

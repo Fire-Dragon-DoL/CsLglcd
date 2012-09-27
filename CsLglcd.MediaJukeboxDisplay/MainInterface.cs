@@ -45,6 +45,9 @@ namespace CsLglcd.MediaJukeboxDisplay
         public MainInterface()
         {
             InitializeComponent();
+            raiseAppletPriorityCheckBox.Checked = Properties.Settings.Default.IncreasePriorityOnTrackChange;
+            priorityTimeoutNumericUpDown.Value = Convert.ToDecimal(Properties.Settings.Default.RaisedPriorityTimeout.TotalSeconds);
+            priorityTimeoutNumericUpDown.Enabled = raiseAppletPriorityCheckBox.Checked;
         }
         #endregion
 
@@ -59,12 +62,15 @@ namespace CsLglcd.MediaJukeboxDisplay
         /// </param>        
         public void Init(MediaJukebox.MediaJukeboxAutomation mcr)
         {
+            // Dunno why sometimes plugin is loaded twice. If that's the case, we simply ignore the second load
+            if (Lglcd.Initialized)
+                return;
+
             try
             {
                 mediaCenterReference = mcr;
-                AMJ = new AppletMediaJukebox(mediaCenterReference);
-                // We don't need this, we will fire everything through a 1 second updating timer
-                //mcr.FireMJEvent += new MediaJukebox.IMJAutomationEvents_FireMJEventEventHandler(MediaJukeboxHandler);
+                AMJ = new AppletMediaJukebox(mediaCenterReference, this);
+                mcr.FireMJEvent += new MediaJukebox.IMJAutomationEvents_FireMJEventEventHandler(MediaJukeboxHandler);
                 Disposed += new EventHandler(MainInterface_Disposed);
             }
             catch (Exception e)
@@ -105,10 +111,13 @@ namespace CsLglcd.MediaJukeboxDisplay
                         switch (bstrParam1)
                         {
                             case "MCC: NOTIFY_TRACK_CHANGE":
+                                AMJ.OnTrackChange(bstrParam2);
                                 break;
                             case "MCC: NOTIFY_PLAYERSTATE_CHANGE":
+                                AMJ.OnPlayerStateChange(bstrParam2);
                                 break;
                             case "MCC: NOTIFY_VOLUME_CHANGED":
+                                AMJ.OnVolumeChange(bstrParam2);
                                 break;
                             default:
                                 break;
@@ -142,5 +151,28 @@ namespace CsLglcd.MediaJukeboxDisplay
 
         #endregion
 
+        private void raiseAppletPriorityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            priorityTimeoutNumericUpDown.Enabled = raiseAppletPriorityCheckBox.Checked;
+            Properties.Settings.Default.IncreasePriorityOnTrackChange = raiseAppletPriorityCheckBox.Checked;
+        }
+
+        private void priorityTimeoutNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.RaisedPriorityTimeout = TimeSpan.FromSeconds(Convert.ToDouble(priorityTimeoutNumericUpDown.Value));
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Properties.Settings.Default.Save();
+                MessageBox.Show("Impostazioni salvate con successo");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Problemi nel salvataggio delle impostazioni: " + exc.ToString());
+            }
+        }
     }
 }

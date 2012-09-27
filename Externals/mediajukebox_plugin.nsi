@@ -1,4 +1,3 @@
-!include "LogicLib.nsh"
 ; Given a .NET version number, this function returns that .NET framework's
 ; install directory. Returns "" if the given .NET version is not installed.
 ; Params: [version] (eg. "v2.0")
@@ -37,34 +36,41 @@
 !insertmacro MacroGetDotNetDir ""
 !insertmacro MacroGetDotNetDir "un."
 
-;NSIS Modern User Interface
-;Welcome/Finish Page Example Script
-;Written by Joost Verburg
+!include "LogicLib.nsh"
+!include "MUI2.nsh"
+  
+  !define PLUGINREGKEY "Software\Wow6432Node\J. River\Media Jukebox\Plugins\Interface\CsLglcd.MediaJukeboxDisplay"
+  !define PROJECTFILESDIR "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release"
+  !define INSTALLDIRREGKEY "Software\J. River\Media Jukebox 14\Installer"
 
-;--------------------------------
-;Include Modern UI
-
-  !include "MUI2.nsh"
-
-;--------------------------------
-;General
-
-  ;Name and file
-  Name "Media Jukebox Plugin Installer"
-  OutFile "mediajukebox_plugin.exe"
+  Var /GLOBAL PathDotNet
+  
+  Name "Media Jukebox Display Installer"
+  OutFile "CsLglcd.MediaJukeboxDisplay_setup.exe"
+  RequestExecutionLevel user
+  ShowInstDetails show
 
   ;Default installation folder
   InstallDir "C:\Program Files (x86)\J River\Media Jukebox 14\Plugins\CsLglcd.MediaJukeboxDisplay"
 
-  ;Get installation folder from registry if available
-  InstallDirRegKey HKCU "Software\J. River\Media Jukebox 14\Plugins\Interface\CsLglcd.MediaJukeboxDisplay" ""
-
-  ;Request application privileges for Windows Vista
-  RequestExecutionLevel user
+  Function .onInit
+    Var /GLOBAL AdvancedInstallPath
+    Var /GLOBAL SuffixInstallPath
+    
+    StrCpy $AdvancedInstallPath ""
+    StrCpy $SuffixInstallPath "Plugins\CsLglcd.MediaJukeboxDisplay"
+    
+    ReadRegStr $AdvancedInstallPath HKCU "${INSTALLDIRREGKEY}" "Install Directory"
+    ${If} $AdvancedInstallPath != ""
+      StrCpy $INSTDIR "$AdvancedInstallPath$SuffixInstallPath"
+      StrCpy $AdvancedInstallPath ""
+    ${EndIf}
+    ReadRegStr $AdvancedInstallPath HKLM "${PLUGINREGKEY}" ""
+    ${If} $AdvancedInstallPath != ""
+      StrCpy $INSTDIR "$AdvancedInstallPath"
+    ${EndIf}
+  FunctionEnd
   
-  ShowInstDetails show
-
-;--------------------------------
 ;Interface Settings
 
   !define MUI_ABORTWARNING
@@ -89,12 +95,6 @@
 
 ;--------------------------------
 ;Installer Sections
-  Var /GLOBAL PathDotNet
-  Var /GLOBAL PLUGINREGKEY
-  
-Section "Var declarations"
-  StrCpy $PLUGINREGKEY "Software\Wow6432Node\J. River\Media Jukebox\Plugins\Interface\CsLglcd.MediaJukeboxDisplay"
-SectionEnd
 
 Section "Install"  
   Push "v4.0"
@@ -107,7 +107,8 @@ Section "Install"
   SetOutPath "$INSTDIR"
 
   ;ADD YOUR OWN FILES HERE...
-  File "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.MediaJukeboxDisplay.dll"
+  File "${PROJECTFILESDIR}\CsLglcd.MediaJukeboxDisplay.dll"
+  File "${PROJECTFILESDIR}\CsLglcd.MediaJukeboxDisplay.dll.config"
   
 	nsExec::ExecToStack '$PathDotNet\regasm.exe /codebase "$INSTDIR\CsLglcd.MediaJukeboxDisplay.dll"'
   Pop $R0
@@ -116,22 +117,22 @@ Section "Install"
   ${EndIf}
   
   ;Additional Files
-  File "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.dll"
-  File "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\CsLglcd.UI.dll"
-  File "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\Lglcd_x64.dll"
-  File "D:\Users\Francesco\Documents\Visual Studio 2010\Projects\CsLglcd\CsLglcd.MediaJukeboxDisplay\bin\Release\Lglcd_x86.dll"
+  File "${PROJECTFILESDIR}\CsLglcd.dll"
+  File "${PROJECTFILESDIR}\CsLglcd.UI.dll"
+  File "${PROJECTFILESDIR}\Lglcd_x64.dll"
+  File "${PROJECTFILESDIR}\Lglcd_x86.dll"
 
   ;Store installation folder
-  WriteRegStr HKLM "$PLUGINREGKEY" "" $INSTDIR
+  WriteRegStr HKLM "${PLUGINREGKEY}" "" $INSTDIR
   
   ; Plugin keys
-  WriteRegDWORD HKLM "$PLUGINREGKEY" "IVersion" 1
-  WriteRegStr HKLM "$PLUGINREGKEY" "Company" "Francesco Belladonna"
-  WriteRegStr HKLM "$PLUGINREGKEY" "Version" "0.0.0.1"
-  WriteRegStr HKLM "$PLUGINREGKEY" "URL" "https://github.com/Fire-Dragon-DoL/CsLglcd"
-  WriteRegStr HKLM "$PLUGINREGKEY" "Copyright" "Copyright (c) 2012, Francesco Belladonna."
-  WriteRegDWORD HKLM "$PLUGINREGKEY" "PluginMode" 1
-  WriteRegStr HKLM "$PLUGINREGKEY" "ProdID" "CsLglcd.MediaJukeboxDisplay"
+  WriteRegDWORD HKLM "${PLUGINREGKEY}" "IVersion" 1
+  WriteRegStr HKLM "${PLUGINREGKEY}" "Company" "Francesco Belladonna"
+  WriteRegStr HKLM "${PLUGINREGKEY}" "Version" "0.0.0.1"
+  WriteRegStr HKLM "${PLUGINREGKEY}" "URL" "https://github.com/Fire-Dragon-DoL/CsLglcd"
+  WriteRegStr HKLM "${PLUGINREGKEY}" "Copyright" "Copyright (c) 2012, Francesco Belladonna."
+  WriteRegDWORD HKLM "${PLUGINREGKEY}" "PluginMode" 1
+  WriteRegStr HKLM "${PLUGINREGKEY}" "ProdID" "CsLglcd.MediaJukeboxDisplay"
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\Uninstall.exe"
@@ -141,6 +142,7 @@ error_dot_net_not_found:
   Abort ".NET 4.0 Framework not found"
 error_cant_register:
   Delete "$INSTDIR\CsLglcd.MediaJukeboxDisplay.dll"
+  Delete "$INSTDIR\CsLglcd.MediaJukeboxDisplay.dll.config"
   RMDir "$INSTDIR"
   
   Abort "Failed registering plugin"
@@ -164,6 +166,7 @@ Section "Uninstall"
 
   ;ADD YOUR OWN FILES HERE...
   Delete "$INSTDIR\CsLglcd.MediaJukeboxDisplay.dll"
+  Delete "$INSTDIR\CsLglcd.MediaJukeboxDisplay.dll.config"
   Delete "$INSTDIR\CsLglcd.dll"
   Delete "$INSTDIR\CsLglcd.UI.dll"
   Delete "$INSTDIR\Lglcd_x64.dll"
@@ -173,16 +176,16 @@ Section "Uninstall"
 
   RMDir "$INSTDIR"
 
-  DeleteRegValue HKLM "$PLUGINREGKEY" ""
-  DeleteRegValue HKLM "$PLUGINREGKEY" "IVersion"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "Company"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "Version"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "URL"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "Copyright"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "PluginMode"
-  DeleteRegValue HKLM "$PLUGINREGKEY" "ProdID"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" ""
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "IVersion"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "Company"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "Version"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "URL"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "Copyright"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "PluginMode"
+  DeleteRegValue HKLM "${PLUGINREGKEY}" "ProdID"
   
-  DeleteRegKey /ifempty HKLM "$PLUGINREGKEY"
+  DeleteRegKey /ifempty HKLM "${PLUGINREGKEY}"
   
   Return
 error_dot_net_not_found:

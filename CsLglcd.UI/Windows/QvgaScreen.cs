@@ -8,6 +8,10 @@ namespace CsLglcd.UI.Windows
 {
     public class QvgaScreen : Screen
     {
+        /// <summary>
+        /// Printed over Background
+        /// </summary>
+        public Image AppBackground { get; set; }
         public Image Background { get; set; }
         public Image Header { get; set; }
         public string Title { get { return Applet.Title; } }
@@ -34,6 +38,8 @@ namespace CsLglcd.UI.Windows
             drawer.Clear(Color.Black);
             if (Background != null)
                 drawer.DrawImage(Background);
+            if (AppBackground != null)
+                drawer.DrawImage(AppBackground);
             if (Header != null)
                 drawer.DrawImage(Header);
             if (IconBackground != null)

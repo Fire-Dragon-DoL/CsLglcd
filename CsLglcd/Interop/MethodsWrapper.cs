@@ -116,7 +116,7 @@ namespace CsLglcd.Interop
         /// <param name="bitmap"></param>
         /// <param name="priority"></param>
         /// <returns></returns>
-        public static uint UpdateBitmap([In] int device, [In] IntPtr bitmap, [In] Priorities priority)
+        public static uint UpdateBitmap([In] int device, [In] IntPtr bitmap, [In] uint priority)
         {
             if (Environment.Is64BitProcess)
                 return Methodsx64.lgLcdUpdateBitmap(device, bitmap, priority);

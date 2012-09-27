@@ -14,6 +14,7 @@ namespace CsLglcd
     {
         public bool Disposed { get; private set; }
         private static bool m_Initialized;
+        public static bool Initialized { get { return m_Initialized; } }
 
         public Lglcd()
         {
@@ -40,11 +41,14 @@ namespace CsLglcd
             if (disposing)
             {
                 // Managed resources
-                m_Initialized = false;
             }
 
             // Unmanaged resources
-            MethodsWrapper.DeInit();            
+            if (Initialized)
+            {
+                MethodsWrapper.DeInit();
+                m_Initialized = false;
+            }
 
             Disposed = true;
         }

@@ -124,8 +124,9 @@ namespace CsLglcd
             {
                 EnsureAttached();
 
-                if (value == m_ForegroundApplet)
-                    return;
+                // NOTE: This has been disabled because we want the possibility to keep forcing ForegroundApplet = true if we are "fighting" against another applet doing the same
+                /*if (value == m_ForegroundApplet)
+                    return;*/
 
                 uint result = MethodsWrapper.SetAsLCDForegroundApp(openByTypeContext.device, value ? ForegroundYesNoFlags.LGLCD_LCD_FOREGROUND_APP_YES : ForegroundYesNoFlags.LGLCD_LCD_FOREGROUND_APP_NO);
                 switch (result)
@@ -135,7 +136,7 @@ namespace CsLglcd
                     case (uint)Errors.ERROR_LOCK_FAILED:
                         throw new DeviceException(result, "The operation could not be completed");
                     default:
-                        throw new DeviceException(result, "Problems attaching the device");
+                        throw new DeviceException(result, "Problems showing applet as foreground");
                 }
 
                 m_ForegroundApplet = value;
@@ -227,7 +228,7 @@ namespace CsLglcd
             EnsureAttached();
             EnsureImageUpdaterNotNull();
 
-            uint result = MethodsWrapper.UpdateBitmap(openByTypeContext.device, ImageUpdater.UnmanagedBitmapHeaderPointer, (Priorities)updatePriority);
+            uint result = MethodsWrapper.UpdateBitmap(openByTypeContext.device, ImageUpdater.UnmanagedBitmapHeaderPointer, ((uint)updateStyle) | ((uint)updatePriority));
             switch (result)
             {
                 case (uint)Errors.ERROR_SUCCESS:

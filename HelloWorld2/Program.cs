@@ -62,6 +62,18 @@ namespace HelloWorld2
                     Console.WriteLine("Current percentage: {0}%", progressbarcontrol.Percentage * 100);
                     qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
                     qvgaDevice.Update();
+
+                    // Try raising app to front
+
+                    Console.WriteLine("Press ENTER for 100% and BRING APPLICATION TO FRONT");
+                    Console.ReadLine();
+
+                    progressbarcontrol.Current = 1000;
+                    form.Draw(testImage, drawer);
+                    Console.WriteLine("Current percentage: {0}%", progressbarcontrol.Percentage * 100);
+                    qvgaDevice.ForegroundApplet = true;
+                    qvgaDevice.SpecializedImageUpdater.SetPixels(testImage);
+                    qvgaDevice.Update(UpdatePriorities.Alert);
                 }
 
                 Console.WriteLine("Press ENTER to cleanup memory");

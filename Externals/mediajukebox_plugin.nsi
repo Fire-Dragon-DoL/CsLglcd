@@ -45,7 +45,7 @@
 
   Var /GLOBAL PathDotNet
   
-  Name "Media Jukebox Display Installer"
+  Name "CsLglcd Media Jukebox Display"
   OutFile "CsLglcd.MediaJukeboxDisplay_setup.exe"
   RequestExecutionLevel user
   ShowInstDetails show
